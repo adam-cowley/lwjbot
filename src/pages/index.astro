@@ -1,0 +1,12 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+import ChatWrapper from '../components/chat/wrapper.solid';
+---
+
+<Layout title="Welcome to Astro.">
+	<main>
+		<ChatWrapper client:load />
+	</main>
+</Layout>
+
