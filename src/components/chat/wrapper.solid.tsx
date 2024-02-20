@@ -7,7 +7,7 @@ import Thinking from './thinking.solid'; // Adjust the import path as necessary
 export default function Home() {
   const { messages, thinking, setContainer, generateResponse } = createChatStore();
 
-//   const thinkingText = `🤔 ${process.env.NEXT_PUBLIC_CHATBOT_NAME || 'Chatbot'} is thinking...`;
+//   const thinkingText = `🤔 ${import.meta.env.SECRET_NEXT_PUBLIC_CHATBOT_NAME || 'Chatbot'} is thinking...`;
   const thinkingText = `🤔 Lengsbot is thinking...`;
 
   return (

@@ -1,4 +1,5 @@
 import type { APIRoute } from "astro";
+import { call } from "../../modules/agent";
 
 const wait = (ms: number = 1000) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -20,12 +21,20 @@ export const POST: APIRoute = async ({ request }) => {
   // Do something with the data, then return a success response
 
   // Simulate a delay
-  await wait(1000);
+  // await wait(1000);
 
+  // return new Response(
+  //   JSON.stringify({
+  //     ...input
+  //   }),
+  //   { status: 200 }
+  // );
+
+  const message = await call(input.message, '1234');
 
   return new Response(
     JSON.stringify({
-      ...input
+      message: message,
     }),
     { status: 200 }
   );

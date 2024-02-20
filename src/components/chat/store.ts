@@ -10,7 +10,7 @@ export function createChatStore() {
   const [messages, setMessages] = createSignal<Message[]>([
     {
       role: 'ai',
-      content: 'How can I help you today?' // process.env.PUBLIC_CHATBOT_GREETING || 'How can I help you today?',
+      content: 'How can I help you today?' // import.meta.env.SECRET_PUBLIC_CHATBOT_GREETING || 'How can I help you today?',
     },
   ]);
 
