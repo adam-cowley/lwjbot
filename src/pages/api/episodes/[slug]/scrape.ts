@@ -1,6 +1,6 @@
 import type { APIRoute } from "astro";
-import { getEpisode } from "../../../modules/ingest/utils";
-import { saveEpisodes } from "../../../modules/ingest";
+import { getEpisode } from "../../../../modules/ingest/utils";
+import { saveEpisodes } from "../../../../modules/ingest";
 
 export const GET: APIRoute = async ({ params, request }) => {
   const slug = params.slug as string;
