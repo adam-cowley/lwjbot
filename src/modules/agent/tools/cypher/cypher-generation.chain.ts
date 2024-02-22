@@ -15,8 +15,7 @@ export default async function initCypherGenerationChain(
   // tag::prompt[]
   // Create Prompt Template
   const cypherPrompt = PromptTemplate.fromTemplate(`
-    You are a Neo4j Developer translating user questions into Cypher to answer questions
-    about movies and provide recommendations.
+    You are a Neo4j Developer translating user questions into Cypher to answer questions.
     Convert the user's question into a Cypher statement based on the schema.
 
     You must:
@@ -31,18 +30,14 @@ export default async function initCypherGenerationChain(
       \`\`\`
     * Include extra information about the nodes that may help an LLM provide a more informative answer,
       for example the release date, rating or budget.
-    * For movies, use the tmdbId property to return a source URL.
-      For example: \`'https://www.themoviedb.org/movie/'+ m.tmdbId AS source\`.
-    * For movie titles that begin with "The", move "the" to the end.
-      For example "The 39 Steps" becomes "39 Steps, The" or "the matrix" becomes "Matrix, The".
-    * Limit the maximum number of results to 10.
+    * When returning speculative answers, limit the maximum number of results to 20.
     * Respond with only a Cypher statement.  No preamble.
+    * Return the episode number, date and URL when mentioning any episode
+    * The latest episodes are the most important, so order by episode.date in reverse order
+
+    Topics: {topics}
 
 
-    Example Question: What role did Tom Hanks play in Toy Story?
-    Example Cypher:
-    MATCH (a:Actor {{name: 'Tom Hanks'}})-[rel:ACTED_IN]->(m:Movie {{title: 'Toy Story'}})
-    RETURN a.name AS Actor, m.title AS Movie, elementId(m) AS _id, rel.role AS RoleInMovie
 
     Schema:
     {schema}
@@ -63,6 +58,10 @@ export default async function initCypherGenerationChain(
       question: new RunnablePassthrough(),
       // Get the schema
       schema: () => graph.getSchema(),
+
+      topics: () => graph.query("MATCH (n:Topic) RETURN n.slug AS slug, n.name AS name")
+        .then(res => res?.map(r => r.slug))
+        .then(res => res?.join(", "))
     },
     // end::assign[]
     // tag::rest[]

@@ -45,22 +45,22 @@ export default function Form(props) {
 
   return (
     <form
-      class="border-t b-slate-200 p-4 bg-slate-100"
+      class=" p-4 bg-slate-700 border-t border-slate-500"
       onSubmit={handleSubmit}
     >
-      <div class="flex flex-row bg-white border border-slate-600 rounded-md w-full">
+      <div class="flex flex-row bg-slate-600 border border-slate-500 rounded-md w-full">
         <div class="flex-grow">
           <textarea
             ref={input}
             value={message()}
             rows={1}
-            class="p-4 border-blue-600 rounded-md w-full outline-none focus:outline-none"
+            class="p-4 border-gray-100 bg-slate-600 text-white rounded-md w-full outline-none focus:outline-none"
             onInput={(e) => setMessage(e.currentTarget.value)}
             onKeyDown={handleKeyDown}
           />
         </div>
-        <div class="px-4">
-          <button type="submit" class="px-4 py-4 border-primary-800 text-blue-700 font-bold rounded-md h-full bg-white">
+        <div class="pl-4">
+          <button type="submit" class="px-4 py-4 bg-slate-600 border-slate-800 text-yellow-300 font-bold rounded-md h-full">
             Send
           </button>
         </div>

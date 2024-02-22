@@ -26,7 +26,7 @@ export default async function initTools(
     new DynamicStructuredTool({
       name: "graph-cypher-retrieval-chain",
       description:
-        "For retrieving movie information from the database including movie recommendations, actors and user ratings",
+        "For retrieving more advanced information about episodes including topics, people, and places.",
       schema: AgentToolInputSchema,
       func: (input, _runManager, config) => cypherChain.invoke(input, config),
     }),
@@ -35,7 +35,7 @@ export default async function initTools(
     new DynamicStructuredTool({
       name: "graph-vector-retrieval-chain",
       description:
-        "For finding movies, comparing movies by their plot or recommending a movie based on a theme",
+        "For performing semantic search to find out qualitative information about an episode",
       schema: AgentToolInputSchema,
       func: (input, _runManager: any, config) =>
         retrievalChain.invoke(input, config),

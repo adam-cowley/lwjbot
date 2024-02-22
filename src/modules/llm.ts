@@ -7,5 +7,5 @@ export const llm = new ChatOpenAI({
 });
 
 export const embeddings = new OpenAIEmbeddings({
-  openAIApiKey: import.meta.env.SECRET_OPENAI_API_KEY as string,
+  openAIApiKey: import.meta.env.SECRET_OPENAI_API_KEY,
 });

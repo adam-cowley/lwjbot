@@ -190,6 +190,9 @@ export default async function initCypherRetrievalChain(
           );
         },
       })
+      .assign({
+        foo: (input: CypherRetrievalThroughput) => console.log(input)
+      })
       // end::save[]
       // tag::output[]
       // Return the output

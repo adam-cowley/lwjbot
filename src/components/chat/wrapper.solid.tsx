@@ -13,16 +13,16 @@ export default function Home() {
   return (
     <>
       <div class="flex flex-col h-screen" style={{ height: '100vh' }}>
-        <div class="p-4 bg-blue-800 flex flex-row justify-between">
+        <div class="p-4 bg-slate-900 flex flex-row justify-between">
           <h1 class="text-white">
             <span class="font-bold">{'Lengsbot'} -</span>
-            <span class="text-blue-100"> {'Boop'}</span>
+            <span class="text-gray-300"> {'Boop'}</span>
           </h1>
         </div>
 
         <div
           ref={setContainer} // Assigning the ref directly
-          class="flex flex-grow flex-col space-y-4 p-3 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch"
+          class="flex flex-grow flex-col space-y-4 p-3 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch bg-gray-800"
         >
           <For each={messages()}>{(m, i) => <Message message={m} />}</For>
 
@@ -31,12 +31,12 @@ export default function Home() {
 
         <Form messages={messages()} thinking={thinking()} onSubmit={generateResponse} />
 
-        <div class="flex flex-row justify-between b-slate-200 px-4 pb-4 bg-slate-100 text-xs text-slate-600">
+        <div class="flex flex-row justify-between px-4 pb-4 bg-slate-700 text-xs text-yellow-100">
           <div class="animate-pulse">{thinking() ? thinkingText : ' '}</div>
           <div>
             Powered by
-            <a href="https://neo4j.com" target="_blank" rel="noopener noreferrer" class="font-bold"> Neo4j</a> &ndash; Learn more at
-            <a href="https://graphacademy.neo4j.com" target="_blank" rel="noopener noreferrer" class="font-bold"> Neo4j GraphAcademy</a>
+            <a href="https://neo4j.com" target="_blank" rel="noopener noreferrer" class="font-bold text-yellow-300"> Neo4j</a> &ndash; Learn more at
+            <a href="https://graphacademy.neo4j.com" target="_blank" rel="noopener noreferrer" class="font-bold text-yellow-300"> Neo4j GraphAcademy</a>
           </div>
         </div>
       </div>
